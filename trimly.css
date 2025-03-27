@@ -1473,6 +1473,28 @@ header {
   margin-bottom: 20px;
 }
 
+.socials{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.fab{
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.fa-instagram{
+  color:rgb(226, 59, 87);
+}
+
+
+
+.fa-whatsapp{
+  color:rgb(6, 165, 6);
+}
+
+
 .container-column {
   display: flex;
   justify-content: space-between;
