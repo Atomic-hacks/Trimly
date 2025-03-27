@@ -26,6 +26,11 @@ body {
   overflow-x: hidden;
 }
 
+a {
+  text-decoration: none;
+  color: #fff;
+}
+
 /* Utility Classes */
 .highlight {
   background: linear-gradient(to bottom, #16ca4c, #05b413);
@@ -1415,7 +1420,7 @@ header {
   margin-right: 30px;
 }
 
-.footer a {
+.container-column a {
   color: #ccc;
   text-decoration: none;
   display: block;
@@ -1424,7 +1429,7 @@ header {
   font-size: 16px;
 }
 
-.footer a:hover {
+.container-column a:hover {
   color: #04c70e;
   transform: translateX(5px);
 }
@@ -1483,6 +1488,10 @@ header {
   font-size: 30px;
   cursor: pointer;
 }
+.fab:hover{
+  scale: 1.1;
+  transition: all 0.3s ease;
+}
 
 .fa-instagram{
   color:rgb(226, 59, 87);
@@ -1492,6 +1501,14 @@ header {
 
 .fa-whatsapp{
   color:rgb(6, 165, 6);
+}
+
+.fa-facebook{
+  color:rgb(11, 135, 156);
+}
+
+.fa-youtube{
+  color:rgb(175, 32, 32);
 }
 
 
@@ -1515,6 +1532,11 @@ header {
     flex-direction: column;
     height: auto;
     padding: 60px 30px;
+  }
+
+  .fab{
+    font-size: 20px;
+    cursor: pointer;
   }
 
   .left,
