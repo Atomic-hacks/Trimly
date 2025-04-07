@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQs - How can we help?</title>
+    <link rel="stylesheet" href="trimly.css" />
+    <style>
+        .container {
+            max-width: 1200px;
+            margin: 100px auto 0 auto;
+        }
+
+        .header {
+            margin-bottom: 50px;
+        }
+
+        .header h1 {
+            font-size: 60px;
+            margin-bottom: 10px;
+        }
+
+        .header h2 {
+            font-size: 26px;
+            font-weight: normal;
+        }
+        
+        
+
+        .tabs {
+            display: flex;
+            overflow-x: auto;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 50px;
+            padding: 0 20px;
+            scroll-padding-left: 20px;
+        }
+
+
+        .tab {
+            flex: 0 0 auto;
+            padding: 15px 20px;
+            background-color: #1e1e1e;
+            color: #aaa;
+            text-align: center;
+            cursor: pointer;
+            border-radius: 5px;
+            min-width: 150px;
+            transition: all 0.3s ease;
+            max-width: 100px;
+        }
+
+        .tab.active {
+            background: linear-gradient(to bottom, #16ca4c, #05b413);
+            color: #000;
+        }
+
+        .faq-content {
+            margin: 50px auto;
+            max-width: 900px;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #333;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+        }
+
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            padding: 15px 0;
+        }
+
+        .faq-question h3 {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .arrow {
+            font-size: 24px;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .faq-answer p {
+            padding: 15px 0;
+            line-height: 1.6;
+            font-size: 16px;
+        }
+
+        .faq-item.active .arrow {
+            transform: rotate(180deg);
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+        }
+
+        .tab-content {
+            display: none;
+            padding: 0 20px;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Contact Form Styles */
+        .contact-form {
+            max-width: 600px;
+            margin: auto;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 16px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            background-color: #222;
+            border: 1px solid #333;
+            color: white;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        button {
+            background-color: #4cd964;
+            color: black;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #3cb953;
+        }
+
+        @media (max-width: 768px) {
+
+            .tab {
+            flex: 0 0 auto;
+            padding: 8px 5px;
+            background-color: #1e1e1e;
+            color: #aaa;
+            text-align: center;
+            cursor: pointer;
+            border-radius: 5px;
+            min-width: 100px;
+            transition: all 0.3s ease;
+        }
+
+            .tabs::after {
+                content: '';
+                position: absolute;
+                top: 0;
+                right: 0;
+                height: 100%;
+                width: 30px;
+                background: linear-gradient(to right, transparent, #121212);
+                pointer-events: none;
+            }
+
+            .header h1 {
+                font-size: 40px;
+            }
+
+            .header h2 {
+                font-size: 20px;
+            }
+
+            .faq-question h3 {
+            font-size: 20px;
+            font-weight:lighter;
+        }
+
+        .faq-answer p{
+            font-size: 15px;
+        }
+
+        }
+    </style>
+</head>
+
+<body>
+    <header id="navbar">
+        <nav class="navbar">
+            <div class="logo">
+                <img src="./images/TRIMLY OUT transp.png" alt="TRIMLY" />
+            </div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="/faq.html">FAQS</a></li>
+                <li><a href="#login" class="btn">Try Trimly for free</a></li>
+            </ul>
+            <div class="mobile-menu">
+                <div class="mobile-menu-btn">
+                    <div class="hamburger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+
+                <!-- Mobile Navigation Menu -->
+                <ul class="nav-links mobile-nav">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                    <li><a href="#faqs">FAQS</a></li>
+                    <li><a href="#login" class="btn">Try Trimly for free</a></li>
+                </ul>
+            </div>
+
+            <!-- Overlay -->
+            <div class="overlay"></div>
+        </nav>
+
+        <!-- <div class="ham-menu">
+              <span>....</span>
+              <span>....</span>
+              <span>....</span>
+          </div> -->
+    </header>
+    <div>
+    <div class="container">
+        <div class="header">
+            <h1>FAQs</h1>
+            <h2>How can we help?</h2>
+        </div>
+
+        <div class="tabs hidden-scrollbar">
+            <div class="tab active" data-tab="general">General</div>
+            <div class="tab" data-tab="account">Account</div>
+            <div class="tab" data-tab="Trimlys">Trimlys</div>
+            <div class="tab" data-tab="customers">Customers</div>
+            <div class="tab" data-tab="pricing">Pricing</div>
+            <div class="tab" data-tab="contact">Contact Us</div>
+        </div>
+
+        <div class="tab-content active" id="general">
+            <div class="faq-content">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Why is Barbr better than other platforms?</h3>
+                        <span class="arrow">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Barbr offers a dedicated platform specifically designed for Trimlys and their clients. Unlike
+                            general booking platforms, we focus exclusively on the Trimlying industry, providing
+                            specialized features like haircut portfolios, style preferences, and Trimly-specific
+                            scheduling tools. Our platform charges lower fees than competitors and provides a more
+                            tailored experience for both Trimlys and customers.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Who is Barbr for?</h3>
+                        <span class="arrow">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Barbr is designed for independent Trimlys, Trimlyshop owners, and clients looking for quality
+                            haircuts. Whether you're a solo Trimly renting a chair, a shop owner managing multiple
+                            Trimlys, or a customer looking for the perfect cut, Barbr streamlines the entire Trimlying
+                            experience from appointment booking to payment processing.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>How much is it?</h3>
+                        <span class="arrow">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Barbr offers flexible pricing options to suit different needs. Our basic plan starts at
+                            $29/month for individual Trimlys, while shop owners can access our premium features starting
+                            at $49/month per shop. We also offer a commission-based plan with just 5% per booking for
+                            those who prefer a pay-as-you-go model. All plans come with a 14-day free trial, no credit
+                            card required.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-content" id="account">
+            <div class="faq-content">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>How do I create an account?</h3>
+                        <span class="arrow">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Creating a Barbr account is simple. Click the "Sign Up" button on our homepage, enter your
+                            email address, create a password, and select whether you're a Trimly or customer. Trimlys
+                            will need to complete additional profile information including services offered and
+                            availability. The entire process takes less than 5 minutes.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>How do I reset my password?</h3>
+                        <span class="arrow">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>If you've forgotten your password, click the "Forgot Password" link on the login page. Enter
+                            the email address associated with your account, and we'll send you a password reset link.
+                            For security reasons, this link will expire after 24 hours. If you don't receive the email,
+                            check your spam folder or contact our support team.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Can I have both a Trimly and customer account?</h3>
+                        <span class="arrow">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, you can maintain both types of accounts with the same email address. After logging in,
+                            you'll be able to switch between your Trimly profile and customer profile using the account
+                            switcher in the top-right corner of the dashboard. This is particularly useful for Trimlys
+                            who also book appointments with other professionals.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-content" id="Trimlys">
+            <div class="faq-content">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>How do I set up my Trimly profile?</h3>
+                        <span class="arrow">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>After creating your Trimly account, you'll be guided through the profile setup process.
+                            You'll need to add your profile photo, experience, specialties, and examples of your work.
+                            You can also set your working hours, available services, pricing, and location. The more
+                            complete your profile, the more likely customers are to book with you.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>How do I manage my availability?</h3>
+                        <span class="arrow">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Managing your availability is easy with our calendar system. Set your regular working hours,
+                            block off time for breaks or personal appointments, and even set recurring time off. You can
+                            also use the instant blocking feature to quickly mark yourself unavailable when unexpected
+                            events arise. All changes sync immediately, so customers will always see your up-to-date
+                            availability.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>How do payments work?</h3>
+                        <span class="arrow">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Barbr handles all payment processing securely. Customers pay through the app when booking,
+                            and funds are transferred to your connected bank account or payment service (like PayPal or
+                            Venmo) either immediately or on a weekly basis, depending on your preference. We charge a
+                            small processing fee of 2.9% + $0.30 per transaction, which is industry standard. You can
+                            track all your earnings in the financial dashboard.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-content" id="customers">
+            <div class="faq-content">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>How do I book an appointment?</h3>
+                        <span class="arrow">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Booking an appointment is straightforward. Browse available Trimlys by location, read
+                            reviews, and view their portfolios. Once you've found the right Trimly, select the service
+                            you want, choose an available time slot, and confirm your booking. You can add your haircut
+                            preferences or special requests during checkout. Payment is processed securely at the time
+                            of booking.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Can I cancel or reschedule my appointment?</h3>
+                        <span class="arrow">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, you can cancel or reschedule through the app. Navigate to "My Appointments," select the
+                            booking you need to change, and choose "Reschedule" or "Cancel." Please note that each
+                            Trimly sets their own cancellation policy, which may include fees for late cancellations
+                            (typically within 24 hours of the appointment). Full details of the cancellation policy are
+                            shown at the time of booking.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>How do I leave a review?</h3>
+                        <span class="arrow">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>After your appointment, you'll receive a notification prompting you to leave a review. Rate
+                            your experience on a 5-star scale and leave detailed feedback about what you liked or areas
+                            for improvement. You can also upload a photo of your haircut if you choose. Reviews are
+                            vital for helping Trimlys improve their service and helping other customers find the right
+                            Trimly for their needs.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-content" id="pricing">
+            <div class="faq-content">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>What are the subscription options?</h3>
+                        <span class="arrow">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Barbr offers three subscription tiers: Basic ($29/month), Pro ($49/month), and Premium
+                            ($79/month). The Basic plan includes appointment booking, payment processing, and basic
+                            analytics. Pro adds advanced scheduling tools, customer management, and marketing features.
+                            Premium includes all features plus priority support, custom branding, and advanced business
+                            analytics. Annual plans receive a 20% discount.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Are there any additional fees?</h3>
+                        <span class="arrow">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Beyond the subscription fee, there's a standard payment processing fee of 2.9% + $0.30 per
+                            transaction. We don't charge any hidden fees or setup costs. For Trimlys who prefer not to
+                            pay a monthly fee, we offer a commission-based option where you pay 5% of each booking
+                            instead of a monthly subscription. This is ideal for part-time Trimlys or those just
+                            starting out.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Do you offer refunds?</h3>
+                        <span class="arrow">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We offer a 30-day money-back guarantee on all new subscriptions. If you're not satisfied with
+                            our service within the first 30 days, contact our support team for a full refund. For annual
+                            subscriptions, we offer prorated refunds if you decide to cancel part-way through your
+                            billing cycle. Note that processing fees for completed transactions cannot be refunded.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-content" id="contact">
+            <h3 style="margin-bottom: 20px;">Contact Us</h3>
+            <div class="contact-form">
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" name="subject" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+
+                    <button type="submit">Send Message</button>
+                </form>
+            </div>
+            
+        </div>
+    </div>
+        <section class="her08">
+            <div class="container8">
+              <!-- Left Side: Images -->
+              <div class="left">
+                <img
+                  src="https://cdn.prod.website-files.com/5ef76950188c031749a0e6dc/64a8bb276ec3f9c423366313_Group%20134.png"
+                  alt="Phone 1"
+                  class="phone phone-1"
+                />
+              </div>
+      
+              <!-- Right Side: Text & Buttons -->
+              <div class="right">
+                <h3>BUILT FOR BARBERS</h3>
+                <h1>
+                  Everything you need to <br />
+                  succeed as a barber
+                </h1>
+                <div class="buttons">
+                  <!--<a href="#"><img src="https://cdn.prod.website-files.com/5ef76950188c031749a0e6dc/64a7456a54ea30a53af38a0e_app%20icon%201%20(1).png" loading="lazy" alt="" class="image-61 display-hidden bar" ></a>-->
+                  <a href="#" class="app-store">
+                    <img
+                      src="https://cdn.prod.website-files.com/5ef76950188c031749a0e6dc/64ab4fdb2c164cc22c4f8418_Group%20(2).svg"
+                      alt="App Store"
+                    />
+                  </a>
+                  <a href="#" class="google-play">
+                    <img
+                      src="https://cdn.prod.website-files.com/5ef76950188c031749a0e6dc/64ab4f39a446d8dc4427903b_Group%20135.svg"
+                      alt="Google Play"
+                    />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </section>
+          <footer class="footer">
+            <div class="footer-text">
+              <div class="logo">Trimly</div>
+              <p>Empowering barbers to thrive <span>🌍</span></p>
+              <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+              <span class="socials">
+                <a class="fab fa-whatsapp" href=""></a>
+                <a class="fab fa-instagram" href="https://www.instagram.com/trimlyafrica?igsh=ZXJvMndtM2c1dzNr"></a>
+                <a class="fab fa-youtube" href="https://youtube.com/@trimly-u2y?si=QCggLtMLdx2karvu"></a>
+                <a class="fab fa-facebook" href="https://www.facebook.com/share/1CXB67bCpY/?mibextid=qi2Omg"></a>
+              </span>
+            </div>
+            <div class="container-column">
+              <div class="column-text">
+                <div class="column-title">Resources</div>
+                <a href="#">About us</a>
+                <a href="/faq.html">FAQS</a>
+                <a href="#">Privacy policy</a>
+                <a href="#">Terms of service</a>
+              </div>
+              <div class="column-text">
+                <div class="column-title">Help</div>
+                <a href="#">Chat (recommended)</a>
+                <a href="#">Email us</a>
+              </div>
+            </div>
+          </footer>
+          <div class="copyright">&copy; 2022 Barbr Ltd. All Rights Reserved.</div>
+    </div>
+
+    <script>
+        // Tab functionality
+        const tabs = document.querySelectorAll('.tab');
+        const tabContents = document.querySelectorAll('.tab-content');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const tabId = tab.getAttribute('data-tab');
+
+
+                tabs.forEach(t => t.classList.remove('active'));
+                tabContents.forEach(c => c.classList.remove('active'));
+
+
+                tab.classList.add('active');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+
+        // FAQ accordion functionality
+        const faqQuestions = document.querySelectorAll('.faq-question');
+
+        faqQuestions.forEach(question => {
+            question.addEventListener('click', () => {
+                const faqItem = question.parentElement;
+                faqItem.classList.toggle('active');
+            });
+        });
+
+        // Contact form submission
+        const contactForm = document.getElementById('contactForm');
+
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const formData = new FormData(contactForm);
+            const formDataObj = {};
+
+            formData.forEach((value, key) => {
+                formDataObj[key] = value;
+            });
+
+            // Here is to send form dat to the server i don't know what we will use yet 
+            // For now i will just log it and show an alert
+            console.log('Form submitted:', formDataObj);
+            alert('Thank you for your message! We will get back to you soon.');
+            contactForm.reset();
+        });
+    </script>
+</body>
+
+</html>

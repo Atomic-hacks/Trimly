@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trimly - Barber Booking Software</title>
+    <link rel="stylesheet" href="trimly.css" />
+    <style>
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header Section */
+        .hero-section {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            margin: 50px 0;
+        }
+
+        /* Left Column - Pricing Card */
+        .pricing-card {
+            flex: 0 0 48%;
+            background-color: #111;
+            border-radius: 20px;
+            border: 1px solid #04c70e;
+            overflow: hidden;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .pricing-header {
+            padding: 30px;
+            text-align: center;
+            background-color: #0a0a0a;
+        }
+
+        .logo {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+
+        .plus {
+            color: #888;
+            font-size: 1.5rem;
+        }
+
+        .price {
+            font-size: 4rem;
+            font-weight: bold;
+            margin: 20px 0 10px;
+        }
+
+        .price-detail {
+            color: #888;
+            margin-bottom: 20px;
+        }
+
+        .pricing-desc {
+            padding: 20px 30px;
+            color: #ccc;
+            text-align: left;
+            border-top: 1px solid #333;
+        }
+
+        /* Features Section */
+        .features-section {
+            padding: 0 30px 30px;
+        }
+
+        .features-title {
+            color: #04c70e;
+            font-size: 1.2rem;
+            margin: 20px 0;
+            text-transform: uppercase;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            transform: translateX(-20px);
+            opacity: 0;
+            animation: slideIn 0.5s ease-out forwards;
+        }
+
+        .feature-item:nth-child(2) { animation-delay: 0.1s; }
+        .feature-item:nth-child(3) { animation-delay: 0.2s; }
+        .feature-item:nth-child(4) { animation-delay: 0.3s; }
+        .feature-item:nth-child(5) { animation-delay: 0.4s; }
+
+        .check-icon {
+            color:#04c70e;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+
+        /* Right Column - Info */
+        .info-section {
+            flex: 0 0 48%;
+            padding: 0 20px;
+        }
+
+        .info-header {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 30px;
+            position: relative;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .info-header::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 3px;
+            background-color: #04c70e;
+            margin-top: 20px;
+        }
+
+        .info-text {
+            margin-bottom: 40px;
+            font-size: 1.1rem;
+            animation: fadeInUp 1s ease-out;
+            animation-delay: 0.3s;
+            opacity: 0;
+            animation-fill-mode: forwards;
+        }
+
+        .highlight {
+            color: #04c70e;
+            font-weight: bold;
+        }
+
+        .info-block {
+            margin-bottom: 60px;
+            animation: fadeInUp 1s ease-out;
+            animation-delay: 0.6s;
+            opacity: 0;
+            animation-fill-mode: forwards;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            text-align: center;
+            padding: 60px 0;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        .cta-header {
+            font-size: 3rem;
+            max-width: 800px;
+            margin: 0 auto 20px;
+            line-height: 1.2;
+        }
+
+        .cta-subheader {
+            font-size: 2.5rem;
+            color: #04c70e;
+            margin-bottom: 40px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: #04c70e;
+            color: #000;
+            font-size: 1.2rem;
+            font-weight: bold;
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(44, 255, 61, 0.5);
+        }
+
+        /* Support Section */
+        .support-section {
+            text-align: center;
+            padding: 30px 0;
+        }
+
+        .support-header {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .support-header::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 3px;
+            background-color: #04c70e;
+            margin: 20px auto 0;
+        }
+
+        .support-text {
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .support-link {
+            color: #04c70e;
+            text-decoration: none;
+        }
+
+        .support-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from { 
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideIn {
+            from { 
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-section {
+                flex-direction: column;
+            }
+            
+            .pricing-card, .info-section {
+                flex: 0 0 100%;
+                margin-bottom: 40px;
+            }
+            
+            .cta-header {
+                font-size: 2rem;
+            }
+            
+            .cta-subheader {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header id="navbar">
+        <nav class="navbar">
+          <div class="logo">
+            <img src="./images/TRIMLY OUT transp.png" alt="TRIMLY" />
+          </div>
+          <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="/pricing.html">Pricing</a></li>
+            <li><a href="/faq.html">FAQS</a></li>
+            <li><a href="#login" class="btn">Try Trimly for free</a></li>
+          </ul>
+          <div class="mobile-menu">
+            <div class="mobile-menu-btn">
+              <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </div>
+  
+            <!-- Mobile Navigation Menu -->
+            <ul class="nav-links mobile-nav">
+              <li><a href="#about">About</a></li>
+              <li><a href="#features">Features</a></li>
+              <li><a href="#pricing">Pricing</a></li>
+              <li><a href="#faqs">FAQS</a></li>
+              <li><a href="#login" class="btn">Try Trimly for free</a></li>
+            </ul>
+          </div>
+  
+          <!-- Overlay -->
+          <div class="overlay"></div>
+        </nav>
+  
+        <!-- <div class="ham-menu">
+              <span>....</span>
+              <span>....</span>
+              <span>....</span>
+          </div> -->
+      </header>
+    <div class="container">
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <h2 class="cta-header">Every barber should be able to reach their true potential.</h2>
+            <h3 class="cta-subheader">Start for free.</h3>
+            <a href="#" class="cta-button">Try Trimly for free</a>
+        </section>
+        <!-- Main Hero Section with Pricing Card and Info -->
+        <section class="hero-section">
+            <!-- Left Column - Pricing Card -->
+            <div class="pricing-card">
+                <div class="pricing-header">
+                    <div class="logo">trimly <span class="plus">PLUS</span></div>
+                    <div class="price">£20</div>
+                    <div class="price-detail">per month</div>
+                </div>
+                <div class="pricing-desc">
+                    Everything a barber needs to save time, earn more and unlock their true potential.
+                </div>
+                <div class="pricing-desc">
+                    FREE if your doing under 25 cuts per month.
+                </div>
+                <div class="features-section">
+                    <div class="features-title">BOOKINGS</div>
+                    <div class="feature-item">
+                        <span class="check-icon">✓</span>
+                        <span>Online bookings</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="check-icon">✓</span>
+                        <span>Manually added bookings</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="check-icon">✓</span>
+                        <span>No-show protection & cancellation fees</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="check-icon">✓</span>
+                        <span>Delivery fees for callouts</span>
+                    </div>
+                    <div class="features-title">SCHEDULE</div>
+                    <div class="feature-item">
+                        <span class="check-icon">✓</span>
+                        <span>Calendar</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="check-icon">✓</span>
+                        <span>Smart pricing (manage demand, afterhours)</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="check-icon">✓</span>
+                        <span>Custom Preferences</span>
+                    </div>
+                    <div class="features-title">BRANDING</div>
+                    <div class="feature-item">
+                        <span class="check-icon">✓</span>
+                        <span>Unique digital profile with booking link</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="check-icon">✓</span>
+                        <span>Showcase skills through portfolio</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="check-icon">✓</span>
+                        <span>Built trust with reviews</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="check-icon">✓</span>
+                        <span>QR business cards & posters</span>
+                    </div>
+                    <div class="features-title">GROWTH</div>
+                    <div class="feature-item">
+                        <span class="check-icon">✓</span>
+                        <span>Analytics (revenue, clients, productivity, demand)</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="check-icon">✓</span>
+                        <span>Custom referral programs</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="check-icon">✓</span>
+                        <span>Digital loyalty cards (coming soon)</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="check-icon">✓</span>
+                        <span>Online courses (coming soon)
+                            CLIENTS</span>
+                    </div>
+                    <div class="features-title">CLIENTS</div>
+                    <div class="feature-item">
+                        <span class="check-icon">✓</span>
+                        <span>See history</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="check-icon">✓</span>
+                        <span>Leave notes</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="check-icon">✓</span>
+                        <span>Block or restrict payment options for bad clients</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column - Info Sections -->
+            <div class="info-section">
+                <div class="info-header">GET FIRST MONTH FREE</div>
+                <div class="info-text">
+                    Every barber that signs up automatically gets <span class="highlight">Trimly plus</span> 
+                    FREE for 1 month! Try it out today and see for yourself what all the hypes about 😊.
+                </div>
+
+                <div class="info-block">
+                    <div class="info-header">HITTING UNDER 25 CUTS PER MONTH? <span class="highlight">PLUS</span> IS FREE</div>
+                    <div class="info-text">
+                        We want to remain accessible to all. Our mission is to empower each and every barber to thrive and we don't want our pricing to get in the way of that.
+                    </div>
+                    <div class="info-text">
+                        As such, Trimly is completely <span class="highlight">FREE for barbers doing under 25 bookings per month</span>, so if your building up your business, don't worry about fees until you hit this level.
+                    </div>
+                </div>
+
+                <div class="info-block">
+                    <div class="info-header">QUESTIONS?</div>
+                    <div class="info-text">
+                        If you have any questions about our pricing, feel free to check out our <span class="highlight">FAQS</span> or get in touch at <span class="highlight">support@trimly.io</span> and we'll get back to you asap!
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        
+    </div>
+    <section class="her08">
+        <div class="container8">
+          <!-- Left Side: Images -->
+          <div class="left">
+            <img
+              src="https://cdn.prod.website-files.com/5ef76950188c031749a0e6dc/64a8bb276ec3f9c423366313_Group%20134.png"
+              alt="Phone 1"
+              class="phone phone-1"
+            />
+          </div>
+  
+          <!-- Right Side: Text & Buttons -->
+          <div class="right">
+            <h3>BUILT FOR BARBERS</h3>
+            <h1>
+              Everything you need to <br />
+              succeed as a barber
+            </h1>
+            <div class="buttons">
+              <!--<a href="#"><img src="https://cdn.prod.website-files.com/5ef76950188c031749a0e6dc/64a7456a54ea30a53af38a0e_app%20icon%201%20(1).png" loading="lazy" alt="" class="image-61 display-hidden bar" ></a>-->
+              <a href="#" class="app-store">
+                <img
+                  src="https://cdn.prod.website-files.com/5ef76950188c031749a0e6dc/64ab4fdb2c164cc22c4f8418_Group%20(2).svg"
+                  alt="App Store"
+                />
+              </a>
+              <a href="#" class="google-play">
+                <img
+                  src="https://cdn.prod.website-files.com/5ef76950188c031749a0e6dc/64ab4f39a446d8dc4427903b_Group%20135.svg"
+                  alt="Google Play"
+                />
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+      <footer class="footer">
+        <div class="footer-text">
+          <div class="logo">Trimly</div>
+          <p>Empowering barbers to thrive <span>🌍</span></p>
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+          <span class="socials">
+            <a class="fab fa-whatsapp" href=""></a>
+            <a class="fab fa-instagram" href="https://www.instagram.com/trimlyafrica?igsh=ZXJvMndtM2c1dzNr"></a>
+            <a class="fab fa-youtube" href="https://youtube.com/@trimly-u2y?si=QCggLtMLdx2karvu"></a>
+            <a class="fab fa-facebook" href="https://www.facebook.com/share/1CXB67bCpY/?mibextid=qi2Omg"></a>
+          </span>
+        </div>
+        <div class="container-column">
+          <div class="column-text">
+            <div class="column-title">Resources</div>
+            <a href="#">About us</a>
+            <a href="#">FAQS</a>
+            <a href="#">Privacy policy</a>
+            <a href="#">Terms of service</a>
+          </div>
+          <div class="column-text">
+            <div class="column-title">Help</div>
+            <a href="#">Chat (recommended)</a>
+            <a href="#">Email us</a>
+          </div>
+        </div>
+      </footer>
+      <div class="copyright">&copy; 2022 Barbr Ltd. All Rights Reserved.</div>
+</body>
+</html>
